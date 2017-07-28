@@ -1,0 +1,39 @@
+{
+    "name": "dranes/omnipay-paysimple",
+    "type": "library",
+    "description": "PaySimple driver for the Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "paysimple"
+    ],
+    "homepage": "https://github.com/dranes/omnipay-paysimple",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andres Garcia",
+            "email": "andresgarcia@gmail.com"
+        },
+        {
+            "name": "Omnipay Contributors",
+            "homepage": "https://github.com/dranes/omnipay-paysimple/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Paysimple\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}

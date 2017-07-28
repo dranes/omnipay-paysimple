@@ -1,0 +1,52 @@
+<?php
+
+namespace Omnipay\Paysimple\Message;
+
+class Response implements \Omnipay\Common\Message\ResponseInterface
+{
+	public function __construct($request, $response)
+	{
+		$this->request = $request;
+		$this->response = $response;
+	}
+
+	public function getRequest()
+	{
+		$this->request;
+	}
+	
+	public function isSuccessful()
+	{
+		return ($this->response->getStatusCode() >= 200 && $this->response->getStatusCode() <= 299);
+	}
+	
+	public function isRedirect()
+	{
+		return false;
+	}
+
+	public function isCancelled()
+	{
+		return false;
+	}
+	
+	public function getMessage()
+	{
+		return $this->response->json();
+	}
+	
+	public function getCode()
+	{
+		return $this->response->getStatusCode();
+	}
+
+	public function getTransactionReference()
+	{
+		return $this->response->json()->Id;
+	}
+
+	public function getData()
+	{
+		return $this->request->getData();
+	}
+}
