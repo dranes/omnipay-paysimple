@@ -42,7 +42,9 @@ class Response implements \Omnipay\Common\Message\ResponseInterface
 
 	public function getTransactionReference()
 	{
-		return $this->response->json()->Id;
+		$json = $this->response->json();
+
+		return $json['Response']['Id'];
 	}
 
 	public function getData()
