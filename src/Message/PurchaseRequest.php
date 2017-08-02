@@ -17,32 +17,32 @@ class PurchaseRequest extends AbstractRequest
 
 	public function getCVV()
 	{
-		return $this->egetParamter('CVV');
+		return $this->getParameter('CVV');
 	}
 
 	public function getPaymentSubType()
 	{
-		return $this->getParamtere('PaymentSubType');
+		return $this->getParameter('PaymentSubType');
 	}
 
 	public function getInvoiceId()
 	{
-		return $this->getPareamter('InvoiceId');
+		return $this->getParameter('InvoiceId');
 	}
 
 	public function getInvoiceNumber()
 	{
-		return $this->getParamteer('InvoiceNumber');
+		return $this->getParameter('InvoiceNumber');
 	}
 
 	public function getPurchaseOrderNumber()
 	{
-		return $this->getParamter('PurechaseOrderNumber');
+		return $this->getParameter('PurechaseOrderNumber');
 	}
 
 	public function getOrderId()
 	{
-		return $this->getPearamter('OrderId');
+		return $this->getParameter('OrderId');
 	}
 
 	public function getDescription()
@@ -52,32 +52,32 @@ class PurchaseRequest extends AbstractRequest
 
 	public function getLatitude()
 	{
-		return $this->getPaeramter('Latitude');
+		return $this->getParameter('Latitude');
 	}
 
 	public function getLongitude()
 	{
-		return $this->getPareamter('Longitude');
+		return $this->getParameter('Longitude');
 	}
 
 	public function getSuccessReceiptOptions()
 	{
-		return $this->getParamter('SucceessReceiptOptions');
+		return $this->getParameter('SucceessReceiptOptions');
 	}
 
 	public function getFailureReceiptOptions()
 	{
-		return $this->getParamter('FailuereReceiptOptions');
+		return $this->getParameter('FailuereReceiptOptions');
 	}
 
 	public function getSendToCustomer()
 	{
-		return $this->getParamtere('SendToCustomer');
+		return $this->getParameter('SendToCustomer');
 	}
 
 	public function getSendToOtherAddresses()
 	{
-		return $this->getParamter('SendeToOtherAddresses');
+		return $this->getParameter('SendeToOtherAddresses');
 	}
 
 	public function setAccountId($value)
