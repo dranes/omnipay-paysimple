@@ -53,30 +53,18 @@ class Gateway extends AbstractGateway
         return $this->createRequest('\Omnipay\Paysimple\Message\PurchaseRequest', $parameters);
     }
 
-    public function fetchCustomers(array $parameters = array())
+    public function createCard(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Paysimple\Message\FetchCustomersRequest', $parameters);
+        return $this->createRequest('\Omnipay\Paysimple\Message\CreateCardRequest', $parameters);
     }
 
-    /*
-    authorize
-    completeAuthorize
-    capture
-    purchase
-    completePurchase
-    refund
-    void
+    public function void(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Paysimple\Message\VoidRequest', $parameters);
+    }
 
-    createCard
-    updateCard
-    deleteCard
-
-    createBankAccount
-    updateBankAccount
-    deleteBankAccount
-
-    createCustomer
-    updateCustomer
-    deleteCustomer
-    */
+    public function refund(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Paysimple\Message\RefundRequest', $parameters);
+    }
 }

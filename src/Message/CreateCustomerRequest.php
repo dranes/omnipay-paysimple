@@ -70,34 +70,14 @@ class CreateCustomerRequest extends AbstractRequest
 		return $this->setParameter('Notes', $value);
 	}
 
-	public function setStreetAddress1($value)
+	public function setBillingAddress($value)
 	{
-		return $this->setParameter('StreetAddress1', $value);
+		return $this->setParameter('BillingAddress', $value);
 	}
 
-	public function setStreetAddress2($value)
+	public function setShippingAddress($value)
 	{
-		return $this->setParameter('StreetAddress2', $value);
-	}
-
-	public function setCity($value)
-	{
-		return $this->setParameter('City', $value);
-	}
-
-	public function setStateCode($value)
-	{
-		return $this->setParameter('StateCode', $value);
-	}
-
-	public function setZipCode($value)
-	{
-		return $this->setParameter('ZipCode', $value);
-	}
-
-	public function setCountry($value)
-	{
-		return $this->setParameter('Country', $value);
+		return $this->setParameter('ShippingAddress', $value);
 	}
 
 	public function getFirstName() 
@@ -165,35 +145,16 @@ class CreateCustomerRequest extends AbstractRequest
 		return $this->getParameter('Notes');
 	}
 
-	public function getStreetAddress1()
+	public function getBillingAddress()
 	{
-		return $this->getParameter('StreetAddress1');
+		return $this->getParameter('BillingAddress');
 	}
 
-	public function getStreetAddress2()
+	public function getShippingAddress()
 	{
-		return $this->getParameter('StreetAddress2');
+		return $this->getParameter('ShippingAddress');
 	}
-
-	public function getStateCode()
-	{
-		return $this->getParameter('StateCode');
-	}
-
-	public function getZipCode()
-	{
-		return $this->getParameter('ZipCode');
-	}
-
-	public function getCountry()
-	{
-		return $this->getParameter('Country');
-	}
-
-	public function getCity()
-	{
-		return $this->getParameter('City');
-	}
+	
 
 	public function getData()
 	{
@@ -203,39 +164,9 @@ class CreateCustomerRequest extends AbstractRequest
 		$data['LastName'] = $this->getLastName();
 		$data['ShippingSameAsBilling'] = $this->getShippingSameAsBilling();
 		
-		$billingAddress = array();
-
-		$billingAddress['StreetAddress1'] = $this->getStreetAddress1();
-		$billingAddress['StreetAddress2'] = $this->getStreetAddress2();
-		$billingAddress['City'] = $this->getCity();
-		$billingAddress['StateCode'] = $this->getStateCode();
-		$billingAddress['ZipCode'] = $this->getZipCode();
-		$billingAddress['Country'] = $this->getCountry();
-
-		$billingAddressData = array_filter($billingAddress, function($value) {
-			return !empty($value);
-		});
-
-		if(sizeof($billingAddressData) > 0) {
-			$data['BillingAddress'] = $billingAddress;
-		}
-
-		$shippingAddress = array();
-
-		$shippingAddress['StreetAddress1'] = $this->getStreetAddress1();
-		$shippingAddress['StreetAddress2'] = $this->getStreetAddress2();
-		$shippingAddress['StateCode'] = $this->getStateCode();
-		$shippingAddress['ZipCode'] = $this->getZipCode();
-		$shippingAddress['Country'] = $this->getCountry();
-
-		$shippingAddressData = array_filter($shippingAddress, function($value) {
-			return !empty($value);
-		});
-
-		if(sizeof($billingAddressData) > 0) {
-			$data['ShippingAddress'] = $billingAddressData;
-		}
-
+		$data['BillingAddress'] = $this->getBillingAddress();
+		$data['ShippingAddress'] = $this->getShippingAddress();
+		
 		$data['Company'] = $this->getCompany();
 		$data['CustomerAccount'] = $this->getCustomerAccount();
 		$data['Phone'] = $this->getPhone();
