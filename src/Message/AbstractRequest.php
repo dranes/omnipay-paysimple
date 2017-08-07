@@ -6,7 +6,7 @@ use Guzzle\Http\Exception\ClientErrorResponseException;
 
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
-	//partnersupport@paysimple.com
+
     protected $sandboxEndpoint = "https://sandbox-api.paysimple.com";
     protected $productionEndpoint = "https://api.paysimple.com";
 
