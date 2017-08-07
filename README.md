@@ -2,7 +2,7 @@
 
 **PaySimple driver for the Omnipay PHP payment processing library**
 
-[![Build Status](https://travis-ci.org/dranes/omnipay-[paysimple].png?branch=master)](https://travis-ci.org/dranes/omnipay-paysimple)
+[![Build Status](https://travis-ci.org/dranes/omnipay-paysimple.svg?branch=master)](https://travis-ci.org/dranes/omnipay-paysimple)
 
 [Omnipay](https://github.com/thephpleague/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements [PaySimple](https://developer.paysimple.com) support for Omnipay.
