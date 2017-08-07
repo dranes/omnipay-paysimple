@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Omnipay\Paysimple\Message;
 
@@ -45,40 +45,40 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getHeaders()
     {
-    	$headers = [];
+        $headers = [];
 
-    	return $headers;
+        return $headers;
     }
 
     public function send()
     {
-    	$data = $this->getData();
+        $data = $this->getData();
         $authorization = $this->authorizationHeader();
-    	$headers = array_merge(
-    		$this->getHeaders(),
-    		['Authorization' => $authorization, 'Content-Type' => 'application/json']
-    	);
+        $headers = array_merge(
+            $this->getHeaders(),
+            ['Authorization' => $authorization, 'Content-Type' => 'application/json']
+        );
 
-    	return $this->sendData($data, $headers);
+        return $this->sendData($data, $headers);
     }
 
     public function sendData($data, array $headers = null)
     {
-        if(sizeof($data) == 0) {
+        if (sizeof($data) == 0) {
             $data = null;
         } else {
-            $data = json_encode($data);    
+            $data = json_encode($data);
         }
         
         $httpRequest = $this->httpClient->createRequest(
-    		$this->getHttpMethod(),
-    		$this->getEndPoint(),
-    		$headers,
+            $this->getHttpMethod(),
+            $this->getEndPoint(),
+            $headers,
             $data
-    	);
+        );
 
-    	try {
-            $httpResponse = $httpRequest->send();    
+        try {
+            $httpResponse = $httpRequest->send();
         } catch (ClientErrorResponseException $e) {
             $httpResponse = $e->getResponse();
         }
@@ -88,7 +88,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getHttpMethod()
     {
-    	return 'POST';
+        return 'POST';
     }
 
     abstract public function getEndpoint();
