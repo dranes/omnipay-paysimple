@@ -101,4 +101,14 @@ class GatewayTest extends GatewayTestCase
 		$this->assertInstanceOf('Omnipay\Paysimple\Message\RefundRequest', $request);
 		$this->assertSame(467890, $request->getPaymentId());
 	}
+
+	public function testRetrievePayment()
+	{
+		$request = $this->gateway->retrievePayment([
+			'PaymentId' => 467890
+		]);
+
+		$this->assertInstanceOf('Omnipay\Paysimple\Message\RetrievePayment', $request);
+		$this->assertSame(467890, $request->getPaymentId());
+	}
 }

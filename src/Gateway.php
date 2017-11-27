@@ -205,4 +205,17 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\Paysimple\Message\RefundRequest', $parameters);
     }
+
+    /**
+     * Retrieve Payment
+     *
+     * Single Payment Objects
+     *
+     * @param  array|array $parameters
+     * @return \Omnipay\Paysimple\Message\Response
+     */
+    public function retrievePayment(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Paysimple\Message\RetrievePayment', $parameters);
+    }
 }
