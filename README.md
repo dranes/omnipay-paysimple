@@ -15,7 +15,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "dranes/omnipay-paysimple": "1.1.*"
+        "dranes/omnipay-paysimple": "1.2.*"
     }
 }
 ```

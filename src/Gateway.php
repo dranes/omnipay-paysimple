@@ -67,6 +67,20 @@ use Omnipay\Common\AbstractGateway;
  *   } else {
  *      $response = $transaction->getMessage();
  *   }
+ * 
+ *   // Retrieving bank accounts 
+ *   $response = $gateway->retrieveBankAccounts(['CustomerId' => '1234567'])->send();
+ *   $accounts = $response->getMessage();
+ * 
+ *   // Retrieving credit card
+ *   $response = $gateway->retrieveCreditCards(['CustomerId' => '1234567'])->send();
+ *   $accounts = $response->getMessage();
+ * 
+ *   // Delete a credit card
+ *   $response = $gateway->deleteCreditCard(['AccountId' => '635402'])->send();
+ * 
+ *   // Delete a bank account
+ *   $response = $gateway->deleteBankAccount(['AccountId' => '635402'])->send();
  * </code>
  *
  * @link https://developer.paysimple.com
@@ -148,6 +162,58 @@ class Gateway extends AbstractGateway
     public function createBankAccount(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Paysimple\Message\CreateBankAccountRequest', $parameters);
+    }
+
+    /**
+     * Retrieve Bank Accounts Request
+     *
+     * Retrieve all bank accounts from a customer
+     *
+     * @param  array|array $parameters
+     * @return \Omnipay\Paysimple\Message\Response
+     */
+    public function retrieveBankAccounts(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Paysimple\Message\RetrieveBankAccountsRequest', $parameters);
+    }
+
+    /**
+     * Retrieve Credit Cards Request
+     *
+     * Retrieve all credit card accounts from a customer
+     *
+     * @param  array|array $parameters
+     * @return \Omnipay\Paysimple\Message\Response
+     */
+    public function retrieveCreditCards(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Paysimple\Message\RetrieveCreditCardsRequest', $parameters);
+    }
+
+    /**
+     * Delete Bank Account Request
+     *
+     * Delete a bank account using AccountId
+     *
+     * @param  array|array $parameters
+     * @return \Omnipay\Paysimple\Message\Response
+     */
+    public function deleteBankAccount(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Paysimple\Message\DeleteBankAccountRequest', $parameters);
+    }
+
+    /**
+     * Delete Credit Card Request
+     *
+     * Delete a credit card using AccountId
+     *
+     * @param  array|array $parameters
+     * @return \Omnipay\Paysimple\Message\Response
+     */
+    public function deleteCreditCard(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Paysimple\Message\DeleteCreditCardRequest', $parameters);
     }
 
     /**

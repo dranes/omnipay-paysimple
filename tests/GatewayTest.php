@@ -111,4 +111,44 @@ class GatewayTest extends GatewayTestCase
 		$this->assertInstanceOf('Omnipay\Paysimple\Message\RetrievePayment', $request);
 		$this->assertSame(467890, $request->getPaymentId());
 	}
+
+	public function testRetrieveBankAccounts()
+	{
+		$request = $this->gateway->retrieveBankAccounts([
+			'CustomerId' => 1234567
+		]);
+
+		$this->assertInstanceOf('Omnipay\Paysimple\Message\RetrieveBankAccountsRequest', $request);
+		$this->assertSame(1234567, $request->getCustomerId());
+	}
+
+	public function testRetrieveCreditCards()
+	{
+		$request = $this->gateway->retrieveCreditCards([
+			'CustomerId' => 1234567
+		]);
+
+		$this->assertInstanceOf('Omnipay\Paysimple\Message\RetrieveCreditCardsRequest', $request);
+		$this->assertSame(1234567, $request->getCustomerId());
+	}
+	
+	public function testDeleteCreditCard()
+	{
+		$request = $this->gateway->deleteCreditCard([
+			'AccountId' => 635402
+		]);
+
+		$this->assertInstanceOf('Omnipay\Paysimple\Message\DeleteCreditCardRequest', $request);
+		$this->assertSame(635402, $request->getAccountId());
+	}
+
+	public function testDeleteBankAccount()
+	{
+		$request = $this->gateway->deleteBankAccount([
+			'AccountId' => 635402
+		]);
+
+		$this->assertInstanceOf('Omnipay\Paysimple\Message\DeleteBankAccountRequest', $request);
+		$this->assertSame(635402, $request->getAccountId());
+	}
 }
