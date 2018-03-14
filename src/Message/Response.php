@@ -17,7 +17,15 @@ class Response implements \Omnipay\Common\Message\ResponseInterface
     
     public function isSuccessful()
     {
-        return ($this->response->getStatusCode() >= 200 && $this->response->getStatusCode() <= 299);
+        $failureData = false;
+        $message = $this->getMessage();
+        if (is_array($message)
+            && isset($message['Response']['FailureData'])
+            && is_array($message['Response']['FailureData'])) {
+            $failureData = true;
+        }
+
+        return ($this->response->getStatusCode() >= 200 && $this->response->getStatusCode() <= 299 && !$failureData);
     }
     
     public function isRedirect()
