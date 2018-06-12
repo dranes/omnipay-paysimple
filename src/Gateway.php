@@ -67,18 +67,18 @@ use Omnipay\Common\AbstractGateway;
  *   } else {
  *      $response = $transaction->getMessage();
  *   }
- * 
- *   // Retrieving bank accounts 
+ *
+ *   // Retrieving bank accounts
  *   $response = $gateway->retrieveBankAccounts(['CustomerId' => '1234567'])->send();
  *   $accounts = $response->getMessage();
- * 
+ *
  *   // Retrieving credit card
  *   $response = $gateway->retrieveCreditCards(['CustomerId' => '1234567'])->send();
  *   $accounts = $response->getMessage();
- * 
+ *
  *   // Delete a credit card
  *   $response = $gateway->deleteCreditCard(['AccountId' => '635402'])->send();
- * 
+ *
  *   // Delete a bank account
  *   $response = $gateway->deleteBankAccount(['AccountId' => '635402'])->send();
  * </code>
@@ -91,6 +91,20 @@ class Gateway extends AbstractGateway
     public function getName()
     {
         return 'Paysimple';
+    }
+
+    /**
+     * Get default parameters for this gateway
+     *
+     * @return void
+     */
+    public function getDefaultParameters()
+    {
+        return [
+            'username' => '',
+            'secret' => '',
+            'testMode' => false
+        ];
     }
 
     /**

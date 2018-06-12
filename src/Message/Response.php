@@ -40,7 +40,8 @@ class Response implements \Omnipay\Common\Message\ResponseInterface
     
     public function getMessage()
     {
-        return $this->response->json();
+        $this->response->getBody()->rewind();
+        return json_decode($this->response->getBody()->getContents(), true);
     }
     
     public function getCode()
@@ -50,7 +51,9 @@ class Response implements \Omnipay\Common\Message\ResponseInterface
 
     public function getTransactionReference()
     {
-        $json = $this->response->json();
+        
+        $this->response->getBody()->rewind();
+        $json = json_decode($this->response->getBody()->getContents(), true);
 
         return $json['Response']['Id'];
     }
